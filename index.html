@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Redirecionamento</title>
-    
     <!-- Código de rastreamento do GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEC2DGHJ6P"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YYWDKQPVXD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-SEC2DGHJ6P');
+        gtag('config', 'G-YYWDKQPVXD'); // Substitua pelo seu ID de medição GA4
     </script>
-
     <style>
         /* Estilos para o símbolo de carregamento */
         body {
@@ -26,8 +24,8 @@
             font-family: Arial, sans-serif;
         }
         .loader {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #3498db;
+            border: 8px solid #f3f3f3; /* Cor de fundo do círculo */
+            border-top: 8px solid #3498db; /* Cor do símbolo de carregamento */
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -38,28 +36,35 @@
             100% { transform: rotate(360deg); }
         }
     </style>
-
     <script type="text/javascript">
         // Função para redirecionar e capturar o evento no GA4
         function redirectToPage() {
+            // Capturar o parâmetro 'url' da URL
             var urlDestino = new URLSearchParams(window.location.search).get('url');
-
+ 
+            // Verificar se o parâmetro 'url' foi passado
             if (urlDestino) {
-                gtag('event', 'redirecionamento', {
+                // Enviar evento personalizado "Cliques do Whatsapp" para o GA4
+                gtag('event', 'Cliques do Whatsapp', {
                     'event_category': 'Redirecionamento',
-                    'event_label': urlDestino,
+                    'event_label': 'Clique no link do WhatsApp',
+                    'destination_url': urlDestino // Passa a URL de destino como parâmetro personalizado
                 });
+
+                // Redirecionar para a página de destino
                 window.location.href = urlDestino;
             } else {
+                // Caso o parâmetro 'url' não tenha sido passado, redirecionar para uma página padrão ou mostrar mensagem de erro
                 alert('URL de destino não fornecida.');
             }
         }
 
         // Redirecionamento após o tempo definido
-        setTimeout(redirectToPage, 1000);
+        setTimeout(redirectToPage, 1000); // 1000 milissegundos = 1 segundo
     </script>
 </head>
 <body>
+    <!-- Símbolo de carregamento (spinner) -->
     <div class="loader"></div>
 </body>
 </html>
