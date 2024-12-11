@@ -40,15 +40,28 @@
         // Função para redirecionar e capturar o evento no GA4
         function redirectToPage() {
             // Capturar o parâmetro 'url' da URL
-            var urlDestino = new URLSearchParams(window.location.search).get('url');
- 
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlDestino = urlParams.get('url');
+            
+            // Capturar parâmetros UTM
+            const utmSource = urlParams.get('utm_source') || '(not set)';
+            const utmMedium = urlParams.get('utm_medium') || '(not set)';
+            const utmCampaign = urlParams.get('utm_campaign') || '(not set)';
+            const utmContent = urlParams.get('utm_content') || '(not set)';
+            const utmTerm = urlParams.get('utm_term') || '(not set)';
+
             // Verificar se o parâmetro 'url' foi passado
             if (urlDestino) {
-                // Enviar evento personalizado "Cliques do Whatsapp" para o GA4
+                // Enviar evento personalizado para o GA4
                 gtag('event', 'Cliques do Whatsapp', {
                     'event_category': 'Redirecionamento',
                     'event_label': 'Clique no link do WhatsApp',
-                    'destination_url': urlDestino // Passa a URL de destino como parâmetro personalizado
+                    'destination_url': urlDestino,
+                    'utm_source': utmSource,
+                    'utm_medium': utmMedium,
+                    'utm_campaign': utmCampaign,
+                    'utm_content': utmContent,
+                    'utm_term': utmTerm
                 });
 
                 // Redirecionar para a página de destino
