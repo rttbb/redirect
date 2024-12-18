@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Redirecionamento</title>
+
+    <!-- Metadados Open Graph para compartilhamento no Facebook, WhatsApp e outros -->
+    <meta property="og:title" content="Título do Conteúdo para Compartilhamento">
+    <meta property="og:description" content="Descrição informativa para compartilhamento em redes sociais.">
+    <meta property="og:image" content="https://exemplo.com/imagem.jpg">
+    <meta property="og:url" content="https://rttbb.github.io/redirect/?url=https://forbes.com.br/forbes-money/2024/11/com-trump-eua-voltam-as-origens-entenda-como-isso-afeta-sua-vida/">
+
     <!-- Código de rastreamento do GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YYWDKQPVXD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-YYWDKQPVXD'); // Substitua pelo seu ID de medição GA4
+        gtag('config', 'G-YYWDKQPVXD');
     </script>
+
     <style>
         /* Estilos para o símbolo de carregamento */
         body {
@@ -24,8 +32,8 @@
             font-family: Arial, sans-serif;
         }
         .loader {
-            border: 8px solid #f3f3f3; /* Cor de fundo do círculo */
-            border-top: 8px solid #3498db; /* Cor do símbolo de carregamento */
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -36,48 +44,9 @@
             100% { transform: rotate(360deg); }
         }
     </style>
-    <script type="text/javascript">
-        // Função para redirecionar e capturar o evento no GA4
-        function redirectToPage() {
-            // Capturar o parâmetro 'url' da URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlDestino = urlParams.get('url');
-            
-            // Capturar parâmetros UTM
-            const utmSource = urlParams.get('utm_source') || '(not set)';
-            const utmMedium = urlParams.get('utm_medium') || '(not set)';
-            const utmCampaign = urlParams.get('utm_campaign') || '(not set)';
-            const utmContent = urlParams.get('utm_content') || '(not set)';
-            const utmTerm = urlParams.get('utm_term') || '(not set)';
-
-            // Verificar se o parâmetro 'url' foi passado
-            if (urlDestino) {
-                // Enviar evento personalizado para o GA4
-                gtag('event', 'Cliques do Whatsapp', {
-                    'event_category': 'Redirecionamento',
-                    'event_label': 'Clique no link do WhatsApp',
-                    'destination_url': urlDestino,
-                    'utm_source': utmSource,
-                    'utm_medium': utmMedium,
-                    'utm_campaign': utmCampaign,
-                    'utm_content': utmContent,
-                    'utm_term': utmTerm
-                });
-
-                // Redirecionar para a página de destino
-                window.location.href = urlDestino;
-            } else {
-                // Caso o parâmetro 'url' não tenha sido passado, redirecionar para uma página padrão ou mostrar mensagem de erro
-                alert('URL de destino não fornecida.');
-            }
-        }
-
-        // Redirecionamento após o tempo definido
-        setTimeout(redirectToPage, 1000); // 1000 milissegundos = 1 segundo
-    </script>
 </head>
 <body>
-    <!-- Símbolo de carregamento (spinner) -->
+    <!-- Símbolo de carregamento -->
     <div class="loader"></div>
 </body>
 </html>
